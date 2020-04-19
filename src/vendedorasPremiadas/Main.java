@@ -5,20 +5,19 @@ import java.io.FileNotFoundException;
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException {
-	int numero=1;
-	String pathInput = "casos_de_prueba/Input/"+numero+".in";
-	String pathOutput = "casos_de_prueba/Output/"+numero+".out";
-	int	cantidadVendedoras = 0,
-		busquedasConsecutivas = 0;
-	String resultado;
-	cantidadVendedoras = LeerEscribirArchivo.LeerCantidad(pathInput);
-	Vendedora []vendedoras = new Vendedora[cantidadVendedoras];
-	Vendedora vendedora = new Vendedora();
-	busquedasConsecutivas = LeerEscribirArchivo.Leer(pathInput, vendedoras, cantidadVendedoras);
-	resultado = vendedoraPremiada(vendedoras, vendedora,busquedasConsecutivas);
-	LeerEscribirArchivo.Escribir(pathOutput, vendedora, resultado);
+		int numero = 1;
+		String pathInput = "casos_de_prueba/Input/" + numero + ".in";
+		String pathOutput = "casos_de_prueba/Output/" + numero + ".out";
+		int cantidadVendedoras = 0, busquedasConsecutivas = 0;
+		String resultado;
+		cantidadVendedoras = LeerEscribirArchivo.LeerCantidad(pathInput);
+		Vendedora[] vendedoras = new Vendedora[cantidadVendedoras];
+		Vendedora vendedora = new Vendedora();
+		busquedasConsecutivas = LeerEscribirArchivo.Leer(pathInput, vendedoras, cantidadVendedoras);
+		resultado = vendedoraPremiada(vendedoras, vendedora, busquedasConsecutivas);
+		LeerEscribirArchivo.Escribir(pathOutput, vendedora, resultado);
 	}
-	
+
 	public static String vendedoraPremiada(Vendedora[] vendedoras, Vendedora vendedora, int busquedasConsecutivas) {
 		int maxImporte = 0, contador = 0, id = 0, noHayMasVendedoras = 0;
 		String resultado = "";
@@ -43,10 +42,11 @@ public class Main {
 			for (int z = 0; z < vendedoras.length; z++) {
 				if (vendedoras[z].isDescalificada() == false
 						&& vendedoras[z].getVentasConsecutivas() >= busquedasConsecutivas) {
-					if (vendedoras[z].sumarImporte(vendedoras[z].ventas, busquedasConsecutivas) == maxImporte) {
+					if (vendedoras[z].sumarImporte(vendedoras[z].getVentas(), busquedasConsecutivas) == maxImporte) {
 						id = vendedoras[z].getId();
 						contador++;
-					} else if (vendedoras[z].sumarImporte(vendedoras[z].ventas, busquedasConsecutivas) < maxImporte) {
+					} else if (vendedoras[z].sumarImporte(vendedoras[z].getVentas(),
+							busquedasConsecutivas) < maxImporte) {
 						vendedoras[z].setDescalificada(true);
 					}
 				}

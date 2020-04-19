@@ -1,21 +1,21 @@
 package vendedorasPremiadas;
 
 public class Vendedora {
-	
-	int id,
-		cantVentas,
-		importeVentas,
-		ventasConsecutivas;
-	boolean descalificada;
-	int []ventas;
-	
+
+	private int id;
+	private int cantVentas;
+	private int importeVentas;
+	private int ventasConsecutivas;
+	private boolean descalificada;
+	private int[] ventas;
+
 	public Vendedora() {
 		this.id = 0;
 		this.cantVentas = 0;
 		this.importeVentas = 0;
-		this.descalificada = false;	
+		this.descalificada = false;
 	}
-	
+
 	public boolean isDescalificada() {
 		return descalificada;
 	}
@@ -43,14 +43,14 @@ public class Vendedora {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
 
-	public int sumarImporte(int []ventas, int ventasConsecutivas) {
+	public int sumarImporte(int[] ventas, int ventasConsecutivas) {
 		int importe = 0;
-		for(int i = 0; i<ventasConsecutivas ; i++) {
+		for (int i = 0; i < ventasConsecutivas; i++) {
 			importe += ventas[i];
 		}
 		return importe;
