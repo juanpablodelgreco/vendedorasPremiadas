@@ -5,8 +5,8 @@ public class Vendedora {
 	private int id;
 	private int cantVentas;
 	private int importeVentas;
-	private int ventasConsecutivas;
 	private boolean descalificada;
+	private int ventasConsecutivas;
 	private int[] ventas;
 
 	public Vendedora() {
@@ -16,6 +16,14 @@ public class Vendedora {
 		this.descalificada = false;
 	}
 
+	public int sumarImporte(int[] ventas, int ventasConsecutivas) {
+		int importe = 0;
+		for (int i = 0; i < ventasConsecutivas; i++) {
+			importe += ventas[i];
+		}
+		return importe;
+	}
+	
 	public boolean isDescalificada() {
 		return descalificada;
 	}
@@ -48,14 +56,6 @@ public class Vendedora {
 		return id;
 	}
 
-	public int sumarImporte(int[] ventas, int ventasConsecutivas) {
-		int importe = 0;
-		for (int i = 0; i < ventasConsecutivas; i++) {
-			importe += ventas[i];
-		}
-		return importe;
-	}
-
 	public int[] getVentas() {
 		return ventas;
 	}
@@ -70,5 +70,5 @@ public class Vendedora {
 
 	public void setVentasConsecutivas(int ventasConsecutivas) {
 		this.ventasConsecutivas = ventasConsecutivas;
-	}
+	}	
 }
